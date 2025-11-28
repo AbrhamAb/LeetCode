@@ -1,14 +1,15 @@
 class Solution:
     def maxOperations(self, nums, k):
-        left, right = 0, len(nums) - 1
-        count = 0
-        while left < right:
-            if nums[left] + nums[right] == k:
-                count += 1
-                left += 1
-                right -= 1
-            elif nums[left] + nums[right] < k:
-                left += 1
+        freq = {}
+        operations = 0
+
+        for num in nums:
+            complement = k - num
+
+            if complement in freq and freq[complement] > 0:
+                operations += 1
+                freq[complement] -= 1
             else:
-                right -= 1
-        return count
+                freq[num] = freq.get(num, 0) + 1
+
+        return operations
