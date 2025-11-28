@@ -13,16 +13,17 @@ class Solution:
         queue = [root]
         
         while queue:
-            # Get the last node in current level
-            result.append(queue[-1].val)
+            level_size = len(queue)
             
-            # Process next level
-            next_level = []
-            for node in queue:
+            for i in range(level_size):
+                node = queue.pop(0)
+            
+                if i == level_size - 1:
+                    result.append(node.val)
+            
                 if node.left:
-                    next_level.append(node.left)
+                    queue.append(node.left)
                 if node.right:
-                    next_level.append(node.right)
-            queue = next_level
+                    queue.append(node.right)
         
         return result
