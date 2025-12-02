@@ -5,7 +5,7 @@ class Solution(object):
         i = 0
 
         while True:
-            if  i < len(ar) and arr[i] == current:
+            if  i < len(arr) and arr[i] == current:
                 i += 1
             else:
                 missing += 1
