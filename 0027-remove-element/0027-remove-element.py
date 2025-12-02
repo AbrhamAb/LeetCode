@@ -1,12 +1,10 @@
 class Solution(object):
     def removeElement(self, nums, val):
-        temp = []
+        k = 0 
+
         for x in nums:
             if x != val:
-                temp.append(x)
+                nums[k] = x
+                k += 1
 
-        for i in range(len(temp)):
-            nums[i] = temp[i]
-
-        return len(temp)
-
+        return k
